@@ -121,10 +121,10 @@ When you are finished, the file contents should look something like
 ### Start the web server
  To start the development server run:
 ```bash
-> python3 manage.py runserver 127.0.0.1:8000
+> python3 manage.py runserver 127.0.0.1:9802
 ```
 Running the server like this, will make the website available 
-[http://127.0.0.1:8000](http://127.0.0.1:8000) other applications also use this port
+[http://127.0.0.1:9802](http://127.0.0.1:9802) other applications also use this port
 so you might need to try out 8001 instead. 
 
 ### Closing down.
@@ -134,3 +134,11 @@ when you are finished running the project you can:
 ```bash
 > deactivate
 ```
+
+## 我的安装记录
+1. Python3.4 安装错误：ERROR: Django requires Python '>=3.5' but the running Python is 3.4.3
+2. Python3.7 安装成功，但运行提示：ModuleNotFoundError: No module named '_ssl' (Python3.7 ssl 安装的问题，需要重新编译Python3.7)
+3. Python 3.6 （最终选择）
+
+
+

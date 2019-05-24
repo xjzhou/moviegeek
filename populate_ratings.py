@@ -11,6 +11,7 @@ django.setup()
 
 from analytics.models import Rating
 
+from utils import logger
 
 def create_rating(user_id, content_id, rating, timestamp):
 
@@ -24,6 +25,8 @@ def create_rating(user_id, content_id, rating, timestamp):
 def download_ratings():
     URL = 'https://raw.githubusercontent.com/sidooms/MovieTweetings/master/latest/ratings.dat'
     response = urllib.request.urlopen(URL)
+
+    logger.info('downloading rating data from {}'.format(URL))
     data = response.read()
 
     print('download finished')
@@ -37,16 +40,14 @@ def delete_db():
 
 
 def populate():
-
     delete_db()
-
     ratings = download_ratings()
 
     for rating in tqdm(ratings.split(sep="\n")):
         r = rating.split(sep="::")
         if len(r) == 4:
             create_rating(r[0], r[1], r[2], r[3])
-
+            logger.debug('{}::{}::{}::{}'.format(r[0], r[1], r[2], r[3]))
 
 if __name__ == '__main__':
     print("Starting MovieGeeks Population script...")
